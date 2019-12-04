@@ -1,5 +1,4 @@
 d1={}
-d2={}
 I={}
 T=0
 with open('3.txt','r')as F:
@@ -14,7 +13,6 @@ with open('3.txt','r')as F:
                 elif d=='R':x+=1
                 elif d=='D':y+=1
                 if T:
-                    d2[(x,y)]=1
                     if(x,y)in d1:
                         I[(x,y)]=I.get((x,y),[])+[(t+i+d1[(x,y)])]
                 else:
