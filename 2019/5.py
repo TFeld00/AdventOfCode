@@ -6,4 +6,7 @@ with open('5.txt','r')as f:
   L+=map(int,l.split(','))
 
 l=L[:]
+intcode(l,makeGen(1))
+
+l=L[:]
 intcode(l,makeGen(5))

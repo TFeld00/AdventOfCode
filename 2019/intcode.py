@@ -41,7 +41,7 @@ def inp(x):
     return move2(x)
 
 def out(x):
-    print getB(x)
+    writeOutput(getB(x))
     return move2(x)
 
 def jit(x):
@@ -94,16 +94,44 @@ def move(l,i):
     
     f=F.get(a,unknown)
     return f((l,mod,i))
+
+def moveUntilWrite(l,i):
+    a=l[i]
+    mod=a/10000,a/1000%10,a/100%10
+    a=a%100
     
-def intcode(l,inputF=input):
+    f=F.get(a,unknown)
+    x=f((l,mod,i))
+    if a==4:return [l,x]
+    return x
+
+def printF(v):
+    print v
+
+def intcode(l,inputF=input,outputF=printF):
     i=0
     global readInput
+    global writeOutput
     readInput=inputF
+    writeOutput=outputF
     while i<len(l):
         j=move(l,i)
         if j==None:return
         i=j
     return l
+
+
+def intcodeOnce(l,i=0,inputF=input,outputF=printF):
+    global readInput
+    global writeOutput
+    readInput=inputF
+    writeOutput=outputF
+    while i<len(l):
+        j=moveUntilWrite(l,i)
+        if type(j)==list:return j
+        if j==None:return
+        i=j
+    #return
 
 
 def makeGen(*l):
