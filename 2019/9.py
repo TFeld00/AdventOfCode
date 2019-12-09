@@ -11,6 +11,5 @@ intcode(l,makeGen(1))
 
 
 #part 2
-l={}
 l=dict(enumerate(L))
 intcode(l,makeGen(2))
