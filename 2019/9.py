@@ -1,7 +1,4 @@
 from intcode import *
-from itertools import *
-from Queue import *
-from heapq import *
 
 L=[]
 with open('9.txt','r')as f:
