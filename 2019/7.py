@@ -1,5 +1,7 @@
 from intcode import *
 from itertools import *
+from Queue import *
+from heapq import *
 
 L=[]
 with open('7.txt','r')as f:
@@ -21,21 +23,22 @@ print max(R)
 print '--- PART 2 ---'
 R={}
 for p in permutations(range(5,10)):
+    I=[Queue()for _ in range(5)]
     lists=[[L[:],0]for _ in range(5)]
-    O=[0] 
+    io=[[I[i].get_nowait,I[(i+1)%5].put]for i in range(5)]
+    O=[0]
     for j,v in enumerate(p):
-        O+=[v]
-        l,i=lists[j]
-        lists[j]=intcodeOnce(l,i,O.pop,O.append)
+        I[j].put(v)
+        
+    I[0].put(0)
     j=4
     while 1:
         j=(j+1)%5
         x=lists[j]
-        if not x:print j;break
         l,i=x
-        r=intcodeOnce(l,i,O.pop,O.append)
-        if not r and j==0:break
+        r=intcodeUntilRead(l,i,*io[j])
+        if not r and j==4:break
         lists[j]=r
-    R[O[-1]]=p
+    R[I[0].get_nowait()]=p
 print R[max(R)],
 print max(R)

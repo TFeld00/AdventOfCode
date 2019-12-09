@@ -36,9 +36,12 @@ def mul(x):
     return move4(x)
 
 def inp(x):
-    v=read()
-    setB(x,v)
-    return move2(x)
+    try:
+        v=read()
+        setB(x,v)
+        return move2(x)
+    except:
+        return [x[0],x[2]]
 
 def out(x):
     writeOutput(getB(x))
@@ -87,23 +90,15 @@ F={
     99:ext
 }
 
-def move(l,i):
+def move(l,i,stopBeforeRead=0):
     a=l[i]
     mod=a/10000,a/1000%10,a/100%10
     a=a%100
-    
+
+    if stopBeforeRead and a==3:return[l,i]
+
     f=F.get(a,unknown)
     return f((l,mod,i))
-
-def moveUntilWrite(l,i):
-    a=l[i]
-    mod=a/10000,a/1000%10,a/100%10
-    a=a%100
-    
-    f=F.get(a,unknown)
-    x=f((l,mod,i))
-    if a==4:return [l,x]
-    return x
 
 def printF(v):
     print v
@@ -121,13 +116,15 @@ def intcode(l,inputF=input,outputF=printF):
     return l
 
 
-def intcodeOnce(l,i=0,inputF=input,outputF=printF):
+def intcodeUntilRead(l,i=0,inputF=input,outputF=printF):
     global readInput
     global writeOutput
     readInput=inputF
     writeOutput=outputF
+    first=0
     while i<len(l):
-        j=moveUntilWrite(l,i)
+        j=move(l,i)
+        first=1
         if type(j)==list:return j
         if j==None:return
         i=j
