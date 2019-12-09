@@ -6,14 +6,14 @@ with open('2.txt','r')as f:
   L+=map(int,l.split(','))
 
   
-l=L[:]
+l=dict(enumerate(L))
 l[1]=12
 l[2]=2
 print intcode(l)[0]
 
 for q in range(100):
  for w in range(100):
-  l=L[:]
+  l=dict(enumerate(L))
   
   l[1]=q
   l[2]=w

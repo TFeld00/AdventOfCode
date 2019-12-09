@@ -1,7 +1,19 @@
 def get(l,m,v):
-    if m:
+    if m==1:
         return v
-    return l[v]
+    if m==2:
+        return l.get(v+getRB(l),0)
+    return l.get(v,0)
+
+def setV(l,m,j,v):
+    if m==2:
+        l[getRB(l)+j]=v
+    else: l[j]=v
+def getRB(l):
+    return l.get('RB',0)
+
+def setRB((l,mod,i),val):
+    l['RB']=getRB(l)+val
 
 def getB((l,(D,C,B),i)):
     return get(l,B,l[i+1])
@@ -12,14 +24,17 @@ def getC((l,(D,C,B),i)):
 def getD((l,(D,C,B),i)):
     return get(l,D,l[i+3])
 
-def setB((l,mod,i),val):
-    l[l[i+1]]=val
+def setB((l,(D,C,B),i),val):
+    b=l[i+1]
+    setV(l,B,b,val)
 
-def setC((l,mod,i),val):
-    l[l[i+2]]=val
+def setC((l,(D,C,B),i),val):
+    c=l[i+2]
+    setV(l,C,c,val)
 
-def setD((l,mod,i),val):
-    l[l[i+3]]=val
+def setD((l,(D,C,B),i),val):
+    d=l[i+3]
+    setV(l,D,d,val)
 
 def move2((l,mod,i)):return i+2
 def move3((l,mod,i)):return i+3
@@ -70,6 +85,11 @@ def veq(x):
 def ext((l,(D,C,B),i)):
     return len(l)
 
+def rel(x):
+    v=getB(x)
+    setRB(x,v)
+    return move2(x)
+
 def unknown((l,(D,C,B),i)):
     print 'unknown code: %d'%l[i]
     return None
@@ -86,6 +106,7 @@ F={
     6:jif,
     7:vlt,
     8:veq,
+    9:rel,
 
     99:ext
 }

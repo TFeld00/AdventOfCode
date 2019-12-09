@@ -5,8 +5,10 @@ with open('5.txt','r')as f:
  for l in f:
   L+=map(int,l.split(','))
 
-l=L[:]
+print'---- 1 ----'
+l=dict(enumerate(L))
 intcode(l,makeGen(1))
 
-l=L[:]
+print'---- 2 ----'
+l=dict(enumerate(L))
 intcode(l,makeGen(5))

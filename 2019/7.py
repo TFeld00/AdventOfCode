@@ -14,7 +14,7 @@ for p in permutations(range(5)):
     O=[0]
     for v in p:
         O+=[v]
-        l=L[:]
+        l=dict(enumerate(L))
         intcode(l,O.pop,O.append)
     R[O[0]]=p
 print R[max(R)],
@@ -24,7 +24,7 @@ print '--- PART 2 ---'
 R={}
 for p in permutations(range(5,10)):
     I=[Queue()for _ in range(5)]
-    lists=[[L[:],0]for _ in range(5)]
+    lists=[[dict(enumerate(L)),0]for _ in range(5)]
     io=[[I[i].get_nowait,I[(i+1)%5].put]for i in range(5)]
     O=[0]
     for j,v in enumerate(p):
