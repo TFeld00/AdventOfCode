@@ -1,11 +1,11 @@
-M=[
-    [-19, -4,   2,0,0,0],
-    [ -9,  8, -16,0,0,0],
-    [ -4,  5, -11,0,0,0],
-    [  1,  9, -13,0,0,0]
-]
-
-m=eval(str(M))
+M=[]
+with open('12.txt','r')as f:
+ for l in f:
+  l=l.strip()[1:-1].split(',')
+  m=[]
+  for v in l:
+    m+=[int(v.split('=')[1])]
+  M+=[m+[0,0,0]]
 
 def step(m):
     for i in range(3):
@@ -24,6 +24,8 @@ def step(m):
 
 
 #PART 1
+m=eval(str(M))
+
 for _ in xrange(1000):
     m=step(m)
 E=0
@@ -60,5 +62,5 @@ while 1:
     sz|={c}
     i+=1
     if X*Y*Z:break
-print X,Y,Z
+
 print lcm(lcm(X,Y),Z)
