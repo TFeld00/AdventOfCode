@@ -1,4 +1,3 @@
-from collections import *
 from heapq import *
 from Queue import *
 import sys
@@ -15,9 +14,7 @@ def read(F):
             if c.isalnum() or c=='@':
                 q.put((j,i,0,c,{(j,i)}))
             
-    #s=set()
     d={}
-    #q.put((X,Y,0,[('@',0)]))
     while not q.empty():
         x,y,l,p,s=q.get()
         for dx,dy in(-1,0),(1,0),(0,-1),(0,1):
@@ -31,49 +28,32 @@ def read(F):
                 q.put((X,Y,l+1,p,s|{(X,Y)}))
     return d
 
-d=read('18.txt')
-q=[]
-s=set()
-r=sum(1<<(ord(v)%32) for v in d if v.islower())
-heappush(q,(0,'@',0,''))
-dist = defaultdict(lambda: float('inf'))
-dist['@', 0] = 0
-while q:
-    l,n,c,p=heappop(q)
-    #print l,n,c
-    if r==c:
-        print l,p;break
-    for e,L in d[n]:
-        C=c
-        if e.islower():
-            C|=1<<(ord(e)%32)
-        if e.isupper():
-            if not C&1<<(ord(e)%32):continue
-        if l+L<dist[e,C]:
-            dist[e,C]=l+L
-            heappush(q,(l+L,e,C,p+e))
-        s|={(e,c)}
+def ans(F,init):
+    d=read(F)
+    q=[(0,init,0,'')]
+    r=sum(1<<(ord(v)%32) for v in d if v.islower())
+    dist={}
+    for c in init:
+        dist[c,0]=0
+    while q:
+        l,N,c,p=heappop(q)
+        if r==c:
+            return l,p
+        for i,n in enumerate(N):
+            for e,L in d[n]:
+                S=N[:i]+e+N[i+1:]
+                C=c
+                if e.islower():
+                    C|=1<<(ord(e)%32)
+                if e.isupper():
+                    if not C&1<<(ord(e)%32):continue
+                if l+L<dist.get((e,C),10**9):
+                    dist[e,C]=l+L
+                    heappush(q,(l+L,S,C,p+e))
 
 
-d=read('18.2.txt')
-q=[(0,'1234',0,'')]
-r=sum(1<<(ord(v)%32) for v in d if v.islower())
-dist = defaultdict(lambda: float('inf'))
-dist['1234', 0] = dist['1234', 0] = dist['1234', 0] = dist['1234', 0] = 0
-while q:
-    l,N,c,p=heappop(q)
-    #print l,n,c
-    if r==c:
-        print l,p;break
-    for i,n in enumerate(N):
-        for e,L in d[n]:
-            S=N[:i]+e+N[i+1:]
-            C=c
-            if e.islower():
-                C|=1<<(ord(e)%32)
-            if e.isupper():
-                if not C&1<<(ord(e)%32):continue
-            if l+L<dist[e,C]:
-                dist[e,C]=l+L
-                heappush(q,(l+L,S,C,p+e))
-                
+l,p=ans('18.txt','@')
+print l,p
+
+l,p=ans('18_2.txt','1234')
+print l,p
