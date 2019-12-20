@@ -28,8 +28,7 @@ for x in range(50):
         i=0
         q=[y,x]
         X,Y=x,y
-        r=intcodeUntilRead(l,i,q.pop,write)
-        r=intcodeUntilRead(l,i,q.pop,write)
+        intcode(l,q.pop,write)
 print b
 
 w49=min(x for x in range(50)if m[x,49])
@@ -47,22 +46,18 @@ while 1:
     x=w
     while 1:
         l=dict(enumerate(L))
-        i=0
         q=[y,x]
         X,Y=x,y
-        r=intcodeUntilRead(l,i,q.pop,write)
-        r=intcodeUntilRead(l,i,q.pop,write)
+        intcode(l,q.pop,write)
         if m.get((x,y),0):break
         x+=1
     w=x
     x=W
     while 1:
         l=dict(enumerate(L))
-        i=0
         q=[y,x]
         X,Y=x,y
-        r=intcodeUntilRead(l,i,q.pop,write)
-        r=intcodeUntilRead(l,i,q.pop,write)
+        intcode(l,q.pop,write)
         if not m.get((x,y),0):break
         x+=1
     W=x-1
