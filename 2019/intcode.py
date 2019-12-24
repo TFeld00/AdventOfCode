@@ -111,12 +111,10 @@ F={
     99:ext
 }
 
-def move(l,i,stopBeforeRead=0):
+def move(l,i):
     a=l[i]
     mod=a/10000,a/1000%10,a/100%10
     a=a%100
-
-    if stopBeforeRead and a==3:return[l,i]
 
     f=F.get(a,unknown)
     return f((l,mod,i))
@@ -130,7 +128,7 @@ def intcode(l,inputF=input,outputF=printF):
     global writeOutput
     readInput=inputF
     writeOutput=outputF
-    while i<len(l):
+    while i in l:
         j=move(l,i)
         if j==None:return
         i=j
@@ -142,14 +140,20 @@ def intcodeUntilRead(l,i=0,inputF=input,outputF=printF):
     global writeOutput
     readInput=inputF
     writeOutput=outputF
-    first=0
-    while i<len(l):
+    while i in l:
         j=move(l,i)
-        first=1
         if type(j)==list:return j
         if j==None:return
         i=j
-    #return
+
+def intcodeOnce(l,i=0,inputF=input,outputF=printF):
+    global readInput
+    global writeOutput
+    readInput=inputF
+    writeOutput=outputF
+    if i not in l:return
+    j=move(l,i)
+    return l,j
 
 
 def makeGen(*l):
