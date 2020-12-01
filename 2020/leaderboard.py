@@ -1,11 +1,26 @@
-from datetime import *
+from datetime import datetime
 import sys
+import requests
 
-A = ""
-with open("leaderboard.txt", "r") as f:
-    for l in f:
-        A += l
-a = eval(A)
+GET_API = False
+a={}
+
+if not GET_API:
+    A = ""
+    with open("leaderboard.json", "r") as f:
+        for l in f:
+            A += l
+    a = eval(A)
+else:
+    url='https://adventofcode.com/2020/leaderboard/private/view/286524.json'
+    session='53616c7465645f5f21795b4332e03e6cc76239c93de1a38b6acb71d71a10f240b64e448dbae147b97e68a46dec11690e'
+    r=requests.get(url,cookies={'session':session})
+    r.encoding='utf-8'
+    t=r.text
+    with open("leaderboard.json", "w") as f:
+        f.write(t)
+    a=eval(t)
+4
 
 days = [datetime(2020, 12, i, 6) for i in range(1, 26)]
 
@@ -52,19 +67,22 @@ sys.stdout.write("\nFastest part 1\n")
 for d in range(1, 26):
     s = sorted([(v[0], n) for (n, v) in times[d].items() if v[:1]])
     v, n = s[0] if s else ("", "")
-    sys.stdout.write("{:2} {:20}     {:24}\n".format(d, str(v), n))
+    if s:
+        sys.stdout.write("{:2} {:>20}     {:24}\n".format(d, str(v), n))
 
 sys.stdout.write("\nFastest part 2\n")
 for d in range(1, 26):
     s = sorted([(v[1], n) for (n, v) in times[d].items() if v[1:2]])
     v, n = s[0] if s else ("", "")
-    sys.stdout.write("{:2} {:>20}     {:24}\n".format(d, str(v), n))
+    if s:
+        sys.stdout.write("{:2} {:>20}     {:24}\n".format(d, str(v), n))
 
 sys.stdout.write("\nFastest part 2 (relative to part 1)\n")
 for d in range(1, 26):
     s = sorted([(v[2], n) for (n, v) in times[d].items() if v[2:3]])
     v, n = s[0] if s else ("", "")
-    sys.stdout.write("{:2} {:>20}     {:24}\n".format(d, str(v), n))
+    if s:
+        sys.stdout.write("{:2} {:>20}     {:24}\n".format(d, str(v), n))
 
 sys.stdout.write("\nPersonal bests\n")
 b1 = [
