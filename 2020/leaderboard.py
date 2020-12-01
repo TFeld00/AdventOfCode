@@ -7,7 +7,7 @@ a={}
 
 if not GET_API:
     A = ""
-    with open("leaderboard.json", "r") as f:
+    with open("leaderboard.json", "r", encoding='utf-8') as f:
         for l in f:
             A += l
     a = eval(A)
@@ -15,12 +15,12 @@ else:
     url='https://adventofcode.com/2020/leaderboard/private/view/286524.json'
     session='53616c7465645f5f21795b4332e03e6cc76239c93de1a38b6acb71d71a10f240b64e448dbae147b97e68a46dec11690e'
     r=requests.get(url,cookies={'session':session})
-    r.encoding='utf-8'
+    #r.encoding='utf-8'
     t=r.text
-    with open("leaderboard.json", "w") as f:
+    with open("leaderboard.json", "w", encoding='utf-8') as f:
         f.write(t)
     a=eval(t)
-4
+
 
 days = [datetime(2020, 12, i, 6) for i in range(1, 26)]
 
