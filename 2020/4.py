@@ -13,9 +13,7 @@ with open(f'{DAY}.txt', 'r') as F:
     for l in F:
         l = l.rstrip('\n')
         if l:
-            for v in l.split():
-                a, b = v.split(':')
-                p[a] = b
+            p |= dict(v.split(':') for v in l.split())
         else:
             r += p,
             p = {}
