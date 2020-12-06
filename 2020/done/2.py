@@ -1,5 +1,5 @@
 import os
-DAY,_,_=os.path.basename(__file__).partition('.')
+DAY,_,_=__file__.rpartition('.')
 
 s=0
 s2=0

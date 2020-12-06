@@ -1,6 +1,7 @@
 r=[]
+DAY,_,_=__file__.rpartition('.')
 
-with open('1.txt','r')as F:
+with open(f'{DAY}.txt', 'r') as F:
     for l in F:
         r+=int(l),
         

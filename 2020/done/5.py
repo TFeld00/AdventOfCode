@@ -1,5 +1,5 @@
 import os
-DAY,_,_=os.path.basename(__file__).partition('.')
+DAY,_,_=__file__.rpartition('.')
 
 from itertools import *
 from collections import *
@@ -15,8 +15,7 @@ s=0
 with open(f'{DAY}.txt','r')as F:
     for l in F:
         l=l.rstrip('\n')
-        L,R,F,B=map(ord,'LRFB')
-        l=l.translate({L:'0',R:'1',F:'0',B:'1'})
+        l=l.translate(str.maketrans('FBLR','0101'))
         
         row,col=int(l[:7],2),int(l[7:],2)
         r+=[(row,col)]
