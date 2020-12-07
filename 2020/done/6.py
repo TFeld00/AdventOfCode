@@ -1,9 +1,9 @@
 import os
 DAY,_,_=__file__.rpartition('.')
+from string import ascii_lowercase
 
 r=[]
-p=set()
-a=1
+p=set(ascii_lowercase)
 with open(f'{DAY}.txt','r')as F:
     for l in F:
         l=l.rstrip('\n')
@@ -12,12 +12,10 @@ with open(f'{DAY}.txt','r')as F:
             #p |={*l}
             
             # PART 2
-            if a:p={*l};a=0
             p &={*l}
         else:
             r += p,
-            p = set()
-            a=1
+            p = set(ascii_lowercase)
 r+=p
 print (sum(map(len,r)))
 
