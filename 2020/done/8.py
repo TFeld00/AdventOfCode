@@ -25,17 +25,16 @@ while i<len(r):
     i+=1
 
 for x in range(len(r)):
-    R=eval(str(r))
-    if R[x][0]=='acc':continue
-    if R[x][0]=='jmp':R[x][0]='nop'
-    elif R[x][0]=='nop':R[x][0]='jmp'
+    if r[x][0]=='acc':continue
+    if r[x][0]=='jmp':r[x][0]='nop'
+    elif r[x][0]=='nop':r[x][0]='jmp'
 
     i=0
     v=0
     s=set()
     inf=0
-    while i<len(R):
-        o,a=R[i]
+    while i<len(r):
+        o,a=r[i]
         if i in s:inf=1;break
         s|={i}
         a=int(a)
@@ -46,7 +45,10 @@ for x in range(len(r)):
         elif o=='nop':
             pass
         i+=1
-    if not inf:
+    if r[x][0]=='jmp':r[x][0]='nop'
+    elif r[x][0]=='nop':r[x][0]='jmp'
 
-        print(v)
-        break
+    if not inf:
+        if i==len(r):
+            print(v)
+            break

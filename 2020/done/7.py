@@ -11,18 +11,16 @@ with open(f'{DAY}.txt','r')as F:
         x=[]
         for o in b:
             o=o.split()
-            if not o:print(b)
             if o[0].isdigit():
                 if int(o[0])>0:
                     x+=(int(o[0]),' '.join(o[1:-1])),
         d[a]=x
-        pass
-
 
 d2={}
 for a in d:
     for _,b in d.get(a,[]):
         d2[b]=d2.get(b,[])+[a]
+
 q=['shiny gold']
 r=[]
 s=set()
