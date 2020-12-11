@@ -1,6 +1,6 @@
 d={}
 
-def get(c):
+def val(c):
     if c.isdigit():return int(c)
     return d.get(c)
 

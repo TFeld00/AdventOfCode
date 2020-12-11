@@ -17,7 +17,7 @@ def write_img(day, cols = COLS):
 
     for i, l in enumerate(r):
         for j, c in enumerate(l):
-            pixels[j, i] = cols.get(c, (ord(c), 0, 0))
+            pixels[j, i] = cols.get(c, (ord(c), 0, 255))
 
     img.save(f"{day}.png")
 

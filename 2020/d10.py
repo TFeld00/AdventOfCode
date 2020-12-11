@@ -44,5 +44,7 @@ def f(r):
 print(f([0]+R))
 
 d={0:1}
-for v in R:d[v]=sum(d.get(v-n,0)for n in(1,2,3))
-print(d[R[-1]])
+for v in R:
+    d[v]=sum(d.get(v-1,0)+d.get(v-2,0)+d.get(v-3,0)
+    #d[v]=sum(d.get(v-n,0)for n in(1,2,3))
+print (d[R[-1]])
