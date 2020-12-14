@@ -70,6 +70,7 @@ a = 148022875403143* n + 49540363913054#, b = 68010510320363 n + 22761788824917,
 r=a*17
 print(r)
 
+# Method 2
 from sympy.ntheory.modular import crt
 U,M=[],[]
 
@@ -77,4 +78,17 @@ for i,v in enumerate(B):
     if v.isdigit():
         U+=-i,
         M+=int(v),
-print(crt(M,U))[0]
+print(crt(M,U))
+
+# Method 3
+step=1
+n=0
+for i,v in enumerate(B):
+    if v.isdigit():
+        offset=i
+        v=int(v)
+        while (n+i)%v:
+            n+=step
+        step*=v
+        step=lcm(step,v)
+print(n)
