@@ -9,6 +9,8 @@ with open(f'{DAY}.txt','r')as F:
         r_orig+=[l]
         pass
 
+W,H=len(r_orig[0]),len(r_orig)
+
 def get_neighbors(r,levels=1):
     D={}
     for i,l in enumerate(r):
@@ -22,7 +24,7 @@ def get_neighbors(r,levels=1):
                         while depth:
                             depth-=1
                             x,y=x+dx,y+dy
-                            if x<0 or y<0 or x>=len(r[0])or y>=len(r):break
+                            if not (0<=x<W and 0<=y<H):break
                             C=r[y][x]
                             if C!='.':
                                 X+=(y,x),;break
