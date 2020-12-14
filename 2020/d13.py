@@ -90,5 +90,5 @@ for i,v in enumerate(B):
         while (n+i)%v:
             n+=step
         step*=v
-        step=lcm(step,v)
+#        step=lcm(step,v)
 print(n)
