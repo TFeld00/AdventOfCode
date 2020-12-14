@@ -25,8 +25,7 @@ for l in r:
         mask=m
     else:
         a,_,m=l.split()
-        a=a[4:-1]
-        a=int(a)
+        a=int(a[4:-1])
 
         m=int(m)
         m|=p
@@ -54,11 +53,10 @@ for l in r:
         mask=m
     else:
         a,_,m=l.split()
-        a=a[4:-1]
-        a=int(a)
+        a=int(a[4:-1])
         m=int(m)
         
         for v in get(f'{a:036b}',mask):
-            mem[int(v)]=m
+            mem[int(v,2)]=m
             
 print(sum(mem.values()))
