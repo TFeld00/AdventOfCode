@@ -11,18 +11,17 @@ with open(f'{DAY}.txt','r')as F:
 
 d={}
 i=0
+p=0
 for n in r:
-    v=d.get(n,[i,i])
-    d[n]=[v[1],i]
+    d[p]=i-1
     p=n
     i+=1
 
 while i<30000000:
-    a,b=d[p]
-    n=b-a
+    a=d.get(p,i-1)
+    n=i-a-1
+    d[p]=i-1
     p=n
-    a,b=d.get(n,(i,i))
-    d[n]=(b,i)
     i+=1
     if i==2020:print(p)
     if i%1000000==0:print(end='.')
