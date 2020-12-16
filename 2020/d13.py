@@ -74,11 +74,9 @@ print(r)
 from sympy.ntheory.modular import crt
 U,M=[],[]
 
-for i,v in enumerate(B):
-    if v.isdigit():
-        U+=-i,
-        M+=int(v),
-print(crt(M,U))
+R,M=zip(*[(-i,int(v))for i,v in enumerate(B)if v.isdigit()])
+print(crt(M,R))
+
 
 # Method 3
 step=1
