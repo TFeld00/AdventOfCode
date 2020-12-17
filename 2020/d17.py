@@ -25,6 +25,19 @@ def getN(x,y,z,d):
 
 for i in range(6):
     D={}
+    # for x,y,z in {
+    #         (x+dx,y+dy,z+dz)
+    #         for dx in(-1,0,1)
+    #         for dy in(-1,0,1)
+    #         for dz in(-1,0,1)
+    #         for x,y,z in d}:
+    #     c=d.get((x,y,z),0)
+    #     n=getN(x,y,z,d)
+    #     if c==1 and 2<=n<=3:
+    #         D[(x,y,z)]=1
+    #     elif c==0 and n==3:
+    #         D[(x,y,z)]=1
+
     x,y,z=zip(*d.keys())
     minX,maxX=min(x),max(x)
     minY,maxY=min(y),max(y)
@@ -59,6 +72,20 @@ def getN(x,y,z,w,d):
 
 for i in range(6):
     D={}
+    # for x,y,z,w in {
+    #         (x+dx,y+dy,z+dz,w+dw)
+    #         for dx in(-1,0,1)
+    #         for dy in(-1,0,1)
+    #         for dz in(-1,0,1)
+    #         for dw in(-1,0,1)
+    #         for x,y,z,w in d}:
+    #     c=d.get((x,y,z,w),0)
+    #     n=getN(x,y,z,w,d)
+    #     if c==1 and 2<=n<=3:
+    #         D[(x,y,z,w)]=1
+    #     elif c==0 and n==3:
+    #         D[(x,y,z,w)]=1
+
     x,y,z,w=zip(*d.keys())
     minX,maxX=min(x),max(x)
     minY,maxY=min(y),max(y)
