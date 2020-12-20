@@ -96,14 +96,15 @@ print(p)
 print(corners)
 
 puz={}
-p0=corners[0]
-puz[(0,0)]=(p0,1)
-
 q=Queue()
-s=set()
 
-q.put((0,0,p0,2,1))
-q.put((0,0,p0,2,2))
+p0=corners[0]
+for o in range(8):
+    if {1,2} <= set(E2[p0][o]):
+        puz[(0,0)]=(p0,o)
+        q.put((0,0,p0,o,1))
+        q.put((0,0,p0,o,2))
+        break
 
 delta={0:(0,-1),1:(1,0),2:(0,1),3:(-1,0)}
 
@@ -121,8 +122,6 @@ while not q.empty() and N>0:
                 if (X+ddx,Y+ddy)not in puz:
                     q.put((X,Y,n,j,s1))
         break
-    
-
 
 Ro=[]
 x,y=zip(*puz.keys())
