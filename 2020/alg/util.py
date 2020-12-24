@@ -24,3 +24,19 @@ def parse_no_headers(F):
             r+=[l]
     if r:d+=[r]
     return d
+
+
+def parse_skip_headers(F):
+    d=[]
+    r=[]
+    n=''
+    for l in F:
+        if not l:
+            d+=[r]
+            n=''
+            r=[]
+        elif l and not n:n=l
+        elif n:
+            r+=[l]
+    if r:d+=[r]
+    return d
