@@ -3,7 +3,9 @@ DAY,_,_=__file__.rpartition('.')
 
 from itertools import *
 from collections import *
+_pow = pow
 from math import *
+pow = _pow
 from string import ascii_lowercase, ascii_uppercase, ascii_letters, digits, hexdigits, whitespace, punctuation, printable
 from alg.dijkstra import dijkstra
 from img.img import read_img, write_img     #write_img(DAY,COLS)
