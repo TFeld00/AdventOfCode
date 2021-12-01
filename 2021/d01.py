@@ -2,11 +2,19 @@ DAY,_,_=__file__.rpartition('.')
 
 r=[]
 
-with open(f'{DAY}.txt', 'r') as F:
+with open(f'{DAY}.txt','r')as F:
     for l in F:
-        r+=int(l),
-        
-# PART 1
-for i,a in enumerate(r):
-    for b in r[i+1:]:
-        if a+b==2020:print(a*b)
+        l=l.rstrip('\n')
+        l=int(l)
+        r+=[l]
+        pass
+
+x=0
+for a,b in zip(r,r[1:]):
+    x+=a<b
+print(x)
+
+y=0
+for a,b in zip(r,r[3:]):
+    y+=a<b
+print(y)
