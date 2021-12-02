@@ -1,0 +1,55 @@
+2021
+220	Thomas Feld
+	 1	12-01 06:00:55	12-01 06:03:38	0:02:43
+218	chce
+	 1	12-01 06:02:28	12-01 06:06:09	0:03:41
+216	Kenneth Jensen
+	 1	12-01 06:04:23	12-01 06:08:40	0:04:17
+214	Anton Göransson
+	 1	12-01 06:04:38	12-01 06:09:00	0:04:22
+212	Morten Madsen
+	 1	12-01 06:05:22	12-01 06:13:19	0:07:57
+210	Niels van der Wekken
+	 1	12-01 06:08:04	12-01 06:16:53	0:08:49
+207	Krzysztof Nc
+	 1	12-01 06:11:32	12-01 06:19:15	0:07:43
+207	paw3lx
+	 1	12-01 06:10:46	12-01 06:19:57	0:09:11
+102	Anders Sørensen
+	 1	12-01 06:16:14
+101	clpnc
+	 1	12-01 06:16:58
+
+
+Fastest part 1
+ 1              0:00:55     Thomas Feld             
+
+Fastest part 2
+ 1              0:03:38     Thomas Feld             
+
+Fastest part 2 (relative to part 1)
+ 1              0:02:43     Thomas Feld             
+
+Personal bests
+Part 1:
+             0:00:55     Thomas Feld              Day 1
+             0:02:28     chce                     Day 1
+             0:04:23     Kenneth Jensen           Day 1
+             0:04:38     Anton Göransson          Day 1
+             0:05:22     Morten Madsen            Day 1
+             0:08:04     Niels van der Wekken     Day 1
+             0:10:46     paw3lx                   Day 1
+             0:11:32     Krzysztof Nc             Day 1
+             0:16:14     Anders Sørensen          Day 1
+             0:16:58     clpnc                    Day 1
+
+Part 2:
+             0:02:43     Thomas Feld              Day 1
+             0:03:41     chce                     Day 1
+             0:04:17     Kenneth Jensen           Day 1
+             0:04:22     Anton Göransson          Day 1
+             0:07:43     Krzysztof Nc             Day 1
+             0:07:57     Morten Madsen            Day 1
+             0:08:49     Niels van der Wekken     Day 1
+             0:09:11     paw3lx                   Day 1
+

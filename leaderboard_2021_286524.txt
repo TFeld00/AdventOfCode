@@ -1,0 +1,29 @@
+2021
+24	Thomas Feld
+	 1	12-01 06:00:55	12-01 06:03:38	0:02:43
+21	Kenneth Jensen
+	 1	12-01 06:04:23	12-01 06:08:40	0:04:17
+21	Andreas Midjord
+	 1	12-01 06:03:07	12-01 06:09:04	0:05:57
+
+
+Fastest part 1
+ 1              0:00:55     Thomas Feld             
+
+Fastest part 2
+ 1              0:03:38     Thomas Feld             
+
+Fastest part 2 (relative to part 1)
+ 1              0:02:43     Thomas Feld             
+
+Personal bests
+Part 1:
+             0:00:55     Thomas Feld              Day 1
+             0:03:07     Andreas Midjord          Day 1
+             0:04:23     Kenneth Jensen           Day 1
+
+Part 2:
+             0:02:43     Thomas Feld              Day 1
+             0:04:17     Kenneth Jensen           Day 1
+             0:05:57     Andreas Midjord          Day 1
+
