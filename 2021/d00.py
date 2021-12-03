@@ -26,6 +26,9 @@ COLS = {
     '#': (0, 0, 0),
 }
 
+from alg.file import download_input
+download_input(DAY)
+
 r=[]
 s=0
 

@@ -1,6 +1,10 @@
 DAY,_,_=__file__.rpartition('.')
 
+from alg.file import download_input
+download_input(DAY)
+
 r=[]
+
 
 with open(f'{DAY}.txt','r')as F:
     for l in F:
