@@ -14,6 +14,8 @@ def download_input(day_file):
     url=f'https://adventofcode.com/{YEAR}/day/{day}/input'
     session='53616c7465645f5f33df4ab6c37a0b8243cea5ab8dbfe729cdc27a47f9c5fdc0781b47155f2f2ecb89d32fdae64f6971'
     r=requests.get(url,cookies={'session':session})
+    if r.status_code == 404:
+        return
 
     with open(file,'w')as F:
         F.writelines(r.text)
