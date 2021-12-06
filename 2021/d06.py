@@ -43,3 +43,9 @@ for g in range(256):
     if g==79: #part 1
         print(sum(n))
 print(sum(n))
+
+#Golf version:
+with open(f'{DAY}.txt','r')as F:s=F.read()
+l=map(s.count,'012345678')
+exec("v,*l=l;l[6]+=v;l+=v,;"*256)
+print(sum(l))
