@@ -12,18 +12,9 @@ with open(f'{DAY}.txt','r')as F:
 
 r=[*map(int,r[0].split(','))]
 
-x=sum(r)
-for i in range(min(r),max(r)+1):
-    d=sum(abs(b-i) for b in r)
-    if d<x:x=d
-print(x)
-
+print(min(sum(abs(b-i) for b in r)for i in range(min(r),max(r)+1)))
 
 def f(n):
     return n*(n+1)//2
 
-x=sum(map(f,r))
-for i in range(min(r),max(r)+1):
-    d=sum(f(abs(b-i)) for b in r)
-    if d<x:x=d
-print(x)
+print(min(sum(f(abs(b-i)) for b in r)for i in range(min(r),max(r)+1)))
