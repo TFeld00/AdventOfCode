@@ -1,7 +1,5 @@
-import os
 DAY,_,_=__file__.rpartition('.')
 
-from itertools import *
 COLS = {
     '.': (255, 255, 255),
     '#': (0, 0, 0),
@@ -28,26 +26,23 @@ for a,b in r:
 
 print(s)
 
-n={
-    0:(0,1,2,4,5,6),
-    1:(2,5),
-    2:(0,2,3,4,6),
-    3:(0,2,3,5,6),
-    4:(1,2,3,5),
-    5:(0,1,3,5,6),
-    6:(0,1,3,4,5,6),
-    7:(0,2,5),
-    8:(0,1,2,3,4,5,6),
-    9:(0,1,2,3,5,6)
-}
-N={*n.values()}
-nR={n[d]:str(d) for d in n}
 total=0
 for a,b in r:
-    for p in permutations('abcdefg'):
-        d={tuple(sorted(map(p.index,v)))for v in a+b}
-        if d<=N:
-            break
-    B=''.join(nR[tuple(sorted(map(p.index,v)))]for v in b)
-    total+=int(B)
+    d={}
+    x=[{*v}for v in a+b]
+    d[1]=next(v for v in x if len(v)==2)
+    d[7]=next(v for v in x if len(v)==3)
+    d[4]=next(v for v in x if len(v)==4)
+    d[8]=next(v for v in x if len(v)==7)
+    d[6]=next(v for v in x if len(v)==6 and d[1]-v)
+    d[9]=next(v for v in x if len(v)==6 and v>d[4])
+    d[0]=next(v for v in x if len(v)==6 and d[6]!=v!=d[9])
+    d[5]=next(v for v in x if len(v)==5 and v<d[6])
+    d[3]=next(v for v in x if len(v)==5 and d[5]!=v<d[9])
+    d[2]=next(v for v in x if len(v)==5 and v not in d.values())
+    s=''
+    y={''.join(sorted(d[v])):str(v)for v in d}
+    for v in b:
+        s+=y[''.join(sorted(v))]
+    total+=int(s)
 print(total)
