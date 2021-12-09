@@ -10,6 +10,7 @@ from string import ascii_lowercase, ascii_uppercase, ascii_letters, digits, hexd
 from alg.dijkstra import dijkstra
 from img.img import read_img, write_img     #write_img(DAY,COLS)
 from alg.util import parse_with_headers, parse_skip_headers, parse_no_headers
+from alg.floodfill import fill
 from functools import *
 from fractions import *
 from textwrap import wrap
