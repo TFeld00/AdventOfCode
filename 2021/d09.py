@@ -31,27 +31,15 @@ for i,l in enumerate(r):
         if c<min(n):s+=1+c
 print(s)
 
-S={(j,i)for i in range(len(r))for j in range(len(r[i]))if r[i][j]!=9}
-v=[]
+from alg.floodfill import fill
+
+s=[l[:]for l in r]
+S={(j,i)for i in range(len(s))for j in range(len(s[i]))if s[i][j]!=9}
+A=[]
 while S:
-    W=len(r[0])
-    H=len(r)
-    q=Queue()
-    s=set()
-    q.put(S.pop())
-    size=0
-    while not q.empty():
-        x,y=q.get()
-        for dx,dy in (0,1),(0,-1),(1,0),(-1,0):
-            X,Y=x+dx,y+dy
-            if (X,Y)in s:continue
-        
-            if 0<=X<W and 0<=Y<H:
-                if r[Y][X]!=9:
-                    s|={(X,Y)}
-                    q.put((X,Y))
-                    size+=1
-    S-=s
-    v+=size,
-v.sort()
-print(prod(v[-3:]))
+    x,y = S.pop()
+    c,a = fill(s,(x,y),'',lambda c,n:n!=9)
+    S-=a
+    A+=c,
+A.sort()
+print(prod(A[-3:]))
