@@ -3,6 +3,8 @@ DAY,_,_=__file__.rpartition('.')
 from alg.file import download_input
 download_input(DAY)
 
+from alg.util import get_neigbors_both
+
 r=[]
 s=0
 
@@ -21,11 +23,9 @@ def f(m):
         for i,l in enumerate(M):
             for j,c in enumerate(l):
                 if c>9:
-                    for di in -1,0,1:
-                        for dj in -1,0,1:
-                            I,J=i+di,j+dj
-                            if 0<=I<len(M) and 0<=J<len(M[0])and (I,J)not in F:
-                                M[I][J]+=1
+                    for I,J,v in get_neigbors_both(M,i,j):
+                        if (I,J)not in F:
+                            M[I][J]+=1
                     F|={(i,j)}
                     M[i][j]=0
                     x=1

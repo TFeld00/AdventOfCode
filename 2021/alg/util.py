@@ -40,3 +40,25 @@ def parse_skip_headers(F):
             r+=[l]
     if r:d+=[r]
     return d
+
+
+def get_neigbors_orto(m,y,x):
+    for dx,dy in (-1,0),(1,0),(0,-1),(0,1):
+        X,Y=x+dx,y+dy
+        if 0<=X<len(m[0]) and 0<=Y<len(m):
+            yield (Y,X,m[Y][X])
+
+def get_neigbors_diag(m,y,x):
+    for dx in (-1,1):
+        for dy in (-1,1):
+            X,Y=x+dx,y+dy
+            if 0<=X<len(m[0]) and 0<=Y<len(m):
+                yield (Y,X,m[Y][X])
+
+def get_neigbors_both(m,y,x,includeSelf=False):
+    for dx in (-1,0,1):
+        for dy in (-1,0,1):
+            if dx==dy==0==includeSelf:continue
+            X,Y=x+dx,y+dy
+            if 0<=X<len(m[0]) and 0<=Y<len(m):
+                yield (Y,X,m[Y][X])
