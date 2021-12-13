@@ -36,3 +36,17 @@ def read_img(day, cols=COLS):
 
     with open(f'{day}_2.txt', 'w') as F:
         F.write('\n'.join(r) + '\n')
+
+
+def write_img_fromlist(list,name, cols = COLS):
+    r=list[:]
+
+    # PIL accesses images in Cartesian co-ordinates, so it is Image[columns, rows]
+    img = Image.new('RGB', (len(r[0]), len(r)), "white")
+    pixels = img.load()  # create the pixel map
+
+    for i, l in enumerate(r):
+        for j, c in enumerate(l):
+            pixels[j, i] = cols.get(c, (ord(c), 0, 255))
+
+    img.save(f"{name}.png")
