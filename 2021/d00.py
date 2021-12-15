@@ -1,6 +1,6 @@
-import os
 DAY,_,_=__file__.rpartition('.')
 
+import os
 from itertools import *
 from collections import *
 _pow = pow
@@ -37,6 +37,7 @@ with open(f'{DAY}.txt','r')as F:
     for l in F:
         l=l.rstrip('\n')
         #l=map(int,l.split())
+        #l=map(int,l)
         #l=l.split()
         #l=int(l)
         #l=list(l)
