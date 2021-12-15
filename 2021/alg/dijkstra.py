@@ -2,12 +2,12 @@ import heapq
 
 
 def dijkstra(graph, starting_vertex):
-    distances = {vertex: (float('infinity'),[]) for vertex in graph}
-    distances[starting_vertex] = (0,[])
+    distances = {vertex: (float('infinity'), None) for vertex in graph}
+    distances[starting_vertex] = (0, None)
 
-    pq = [(0, starting_vertex,[])]
+    pq = [(0, starting_vertex, None)]
     while len(pq) > 0:
-        current_distance, current_vertex,path = heapq.heappop(pq)
+        current_distance, current_vertex, path = heapq.heappop(pq)
 
         # Nodes can get added to the priority queue multiple times. We only
         # process a vertex the first time we remove it from the priority queue.
@@ -20,10 +20,11 @@ def dijkstra(graph, starting_vertex):
             # Only consider this new path if it's better than any path we've
             # already found.
             if distance < distances[neighbor][0]:
-                distances[neighbor] = (distance,path+[neighbor])
-                heapq.heappush(pq, (distance, neighbor,path+[neighbor]))
+                distances[neighbor] = (distance, current_vertex)
+                heapq.heappush(pq, (distance, neighbor, current_vertex))
 
     return distances
+
 
 """
 example_graph = {
@@ -38,3 +39,11 @@ print(dijkstra(example_graph, 'X'))
 """
 # => {'U': 1, 'W': 2, 'V': 2, 'Y': 1, 'X': 0, 'Z': 2}
 
+
+def get_dijkstra_path(distances, target_vertex):
+    _, prev = distances[target_vertex]
+    path = [prev]
+    while distances[prev][1] is not None:
+        prev = distances[prev][1]
+        path += [prev]
+    return path[::-1]

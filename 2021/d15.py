@@ -1,6 +1,6 @@
 DAY,_,_=__file__.rpartition('.')
 
-from alg.dijkstra import dijkstra
+from alg.dijkstra import dijkstra, get_dijkstra_path
 from img.img import write_img_fromlist     #write_img(DAY,COLS)
 from alg.util import get_neigbors_orto
 
@@ -55,13 +55,12 @@ D2=dijkstra(d, (0,0))
 w,h=len(R[0]),len(R)
 print(D2[(w-1,h-1)][0])
 
-
 #viz
 m=[['.']*w for _ in' '*h]
-for x,y in D1[(W-1,H-1)][1]:
+for x,y in get_dijkstra_path(D1,(W-1,H-1)):
     m[y][x]='1'
 
-for x,y in D2[(w-1,h-1)][1]:
+for x,y in get_dijkstra_path(D2,(w-1,h-1)):
     m[y][x]='2'
 
 write_img_fromlist(m,DAY,COLS)
