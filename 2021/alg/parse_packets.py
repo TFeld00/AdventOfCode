@@ -1,25 +1,10 @@
-DAY,_,_=__file__.rpartition('.')
-
 _pow = pow
 from math import *
 pow = _pow
-
-from alg.file import download_input
-download_input(DAY)
-
 r=[]
-s=0
-
-with open(f'{DAY}.txt','r')as F:
-    for l in F:
-        l=l.rstrip('\n')
-        r+=[l]
-
 r=r[0]
 s=''
 for c in r:s+=f'{int(c,16):04b}'
-
-P=[]
 
 def get_packet(s):
     v=int(s[:3],2)
