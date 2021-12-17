@@ -23,20 +23,20 @@ def steps(dx,dy):
         dx-=[0,1,-1][(dx>0)-(dx<0)]
         dy-=1
         m=max(y,m)
-        if tx<=x<=tX and ty<=y<=tY:return 1,m
+        if tx<=x<=tX and ty<=y<=tY:return m
         if dx==0 and x<tx:break
         if y<ty:break
-    return 0,0
+    return -1
 
 m=0,0
 s=0
 
-for dx in range(1,tX+1):
+for dx in range(tX+1):
     dy=ty-1
-    for dy in range(ty-1,200):
+    for dy in range(ty-1,-ty):
         dy+=1
-        v,r=steps(dx,dy)
-        if v:
+        r=steps(dx,dy)
+        if r>=0:
             m=max((r,dy),m) # part 1
             s+=1            # part 2
 
