@@ -20,9 +20,6 @@ def split(m):
     r=x-l
     return str([l,r]).replace(' ','')
 
-def expl_left(m,a):
-    return str(int(m[0][::-1])+a)[::-1]
-
 def red(s):
     S=s
     while 1:
@@ -39,8 +36,8 @@ def red(s):
                     break
                 d-=1
         if e:
-            a,b = eval(s[j:i+1])
-            x=re.sub('\d+',lambda m:expl_left(m,a),s[:j][::-1],1)[::-1]
+            a,b = map(int,s[j+1:i].split(','))
+            x=re.sub('\d+',lambda m:str(int(m[0][::-1])+a)[::-1],s[:j][::-1],1)[::-1]
             y=re.sub('\d+',lambda m:str(int(m[0])+b),s[i+1:],1)
             S=x+'0'+y
         else:
@@ -49,9 +46,7 @@ def red(s):
             return s
 
 def add(a,b):
-    r='['+red(a)+','+red(b)+']'
-    r=red(r)
-    return r
+    return red('['+a+','+b+']')
 
 def mag(p):
     if type(p)==int:return p
