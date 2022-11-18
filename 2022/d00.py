@@ -37,8 +37,8 @@ s=0
 with open(f'{DAY}.txt','r')as F:
     for l in F:
         l=l.rstrip('\n')
-        #l=map(int,l.split())
-        #l=map(int,l)
+        #l=[*map(int,l.split())]
+        #l=[*map(int,l)]
         #l=l.split()
         #l=int(l)
         #l=list(l)
