@@ -12,11 +12,9 @@ r="""......#..
 .#..#.##.""".split()
 
 
-W=len(r[0])
-H=len(r)
-x,y=0,0
-
-def bfs(x,y):
+def bfs(r,x,y):
+    W=len(r[0])
+    H=len(r)
     q=Queue()
     s=set()
     q.put((x,y,0))
