@@ -9,3 +9,9 @@ def shift_caesar(s,n):
 def tr(s,a,b):
     t=str.maketrans(a,b)
     return s.translate(t)
+
+BLOCK_PRINT=' █'
+
+def block_print(s:list):
+    for l in s:
+        print(''.join(BLOCK_PRINT[v]for v in l))
