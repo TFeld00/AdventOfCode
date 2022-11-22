@@ -1,7 +1,7 @@
 DAY,_,_=__file__.rpartition('.')
 
 from collections import *
-from string import ascii_lowercase
+from alg.string import shift_caesar
 
 from alg.file import download_input
 download_input(DAY)
@@ -28,6 +28,6 @@ print(s)
 
 #part 2
 for a,b,c in r:
-    a=''.join(a.translate(str.maketrans(ascii_lowercase+'-', ascii_lowercase[b%26:]+ ascii_lowercase[:b%26]+' ')))
+    a=shift_caesar(a,b).replace('-','')
     if 'pole' in a:
         print(a,b)
