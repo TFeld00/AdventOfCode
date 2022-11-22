@@ -6,15 +6,12 @@ from alg.file import download_input
 download_input(DAY)
 
 r=[]
-n=0
-s=''
 
 with open(f'{DAY}.txt','r')as F:
     for l in F:
         l=l.rstrip('\n')
         a,b,c,d,e = map(int,re.findall(r'-?\d+',l))
         r+=[(a,b,c,d,e)]
-        pass
 
 R=[]
 for i in range(101):
@@ -30,5 +27,6 @@ for i in range(101):
 
 #part 1
 print(max(R)[0])
+
 #part 2
 print(max(v for v,e in R if e==500))

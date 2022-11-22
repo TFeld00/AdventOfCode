@@ -10,6 +10,7 @@ with open(f'{DAY}.txt','r')as F:
         l=l.rstrip('\n')
         s+=l
 
+#part 1
 d={0:1}
 x=0
 for c in s:

@@ -1,8 +1,6 @@
 DAY,_,_=__file__.rpartition('.')
 
-_pow = pow
-from math import *
-pow = _pow
+from math import ceil
 
 from alg.file import download_input
 download_input(DAY)

@@ -1,6 +1,7 @@
 DAY,_,_=__file__.rpartition('.')
 
 from itertools import *
+
 from alg.file import download_input
 download_input(DAY)
 
@@ -24,6 +25,8 @@ for c in permutations(r):
     x=sum(d[a][b]for a,b in zip(c,c[1:]))
     l+=x,
 
+#part 1
 print(min(l))
 
+#part 2
 print(max(l))

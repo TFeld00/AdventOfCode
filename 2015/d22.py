@@ -1,6 +1,6 @@
 DAY,_,_=__file__.rpartition('.')
 
-from functools import *
+from functools import cache
 
 from alg.file import download_input
 download_input(DAY)

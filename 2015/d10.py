@@ -12,10 +12,12 @@ with open(f'{DAY}.txt','r')as F:
         l=l.rstrip('\n')
         s=l
 
+#part 1
 for i in range(40):
     s=''.join(str(len(list(g)))+c for c,g in groupby(s))
 print(len(s))
 
+#part 2
 for i in range(10):
     s=''.join(str(len(list(g)))+c for c,g in groupby(s))
 print(len(s))

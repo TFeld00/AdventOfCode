@@ -11,7 +11,6 @@ with open(f'{DAY}.txt','r')as F:
     for l in F:
         l=l.rstrip('\n')
         r+=[l]
-        pass
 
 #part 1
 m=parse_list(r,'#')
@@ -19,7 +18,6 @@ for _ in range(100):
     m=step_list(m, step_function_game_of_life([2,3],[3]), False, False)
     
 print(sum(map(sum,m)))
-
 
 #part 2
 m=parse_list(r,'#')

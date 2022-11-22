@@ -17,5 +17,8 @@ for s in r:
     b+=len(eval(s))
     c+=len(s)+s.count('"')+s.count('\\')+2
 
-print(a-b) #part 1
-print(c-a) #part 2
+#part 1
+print(a-b)
+
+#part 2
+print(c-a)

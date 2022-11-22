@@ -4,7 +4,6 @@ from alg.file import download_input
 download_input(DAY)
 
 r=[]
-s=0
 
 with open(f'{DAY}.txt','r')as F:
     for l in F:
