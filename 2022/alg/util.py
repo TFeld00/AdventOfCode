@@ -1,4 +1,4 @@
-def parse_with_headers(F):
+def parse_with_headers(F, func = None):
     d = {}
     n = ''
     r = []
@@ -10,13 +10,15 @@ def parse_with_headers(F):
         elif l and not n:
             n = l
         elif n:
+            if func:
+                l=func(l)
             r += [l]
     if r:
         d[n] = r
     return d
 
 
-def parse_no_headers(F):
+def parse_no_headers(F, func = None):
     d = []
     r = []
     for l in F:
@@ -24,13 +26,15 @@ def parse_no_headers(F):
             d += [r]
             r = []
         else:
+            if func:
+                l=func(l)
             r += [l]
     if r:
         d += [r]
     return d
 
 
-def parse_skip_headers(F):
+def parse_skip_headers(F, func = None):
     d = []
     r = []
     n = ''
@@ -42,6 +46,8 @@ def parse_skip_headers(F):
         elif l and not n:
             n = l
         elif n:
+            if func:
+                l=func(l)
             r += [l]
     if r:
         d += [r]
