@@ -37,7 +37,7 @@ for i,(a,b) in enumerate(r,1):
     a=eval(a)
     b=eval(b)
     X+=a,b #part 2
-    if (v:=cmp(a,b))<0:
+    if cmp(a,b)<0:
         s+=i
 print(s) #part 1
 
