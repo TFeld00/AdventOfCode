@@ -11,7 +11,8 @@ with open(f'{DAY}.txt','r')as F:
         l=l.split(' -> ')
         r+=[[*map(eval,l)]]
 
-d=set()
+s=set()
+maxY=0
 for l in r:
     for a,b in zip(l,l[1:]):
         x,y=a
@@ -20,16 +21,15 @@ for l in r:
         if y>Y:y,Y=Y,y
         for i in range(x,X+1):
             for j in range(y,Y+1):
-                d|={(i,j)}
-
-x,y=zip(*d)
-maxY=max(y)
+                s|={(i,j)}
+            maxY=max(maxY,Y)
 
 t1=t2=0
-s=set(d)
 end1=0
-while (500,0) not in s:
-    x,y=(500,0)
+
+start = (500,0)
+while start not in s:
+    x,y=start
     while 1:
         if y>maxY:
             end1=1
