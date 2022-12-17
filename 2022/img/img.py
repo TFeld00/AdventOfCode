@@ -47,6 +47,6 @@ def write_img_fromlist(list,name, cols = COLS):
 
     for i, l in enumerate(r):
         for j, c in enumerate(l):
-            pixels[j, i] = cols.get(c, (ord(c), 0, 255))
+            pixels[j, i] = cols.get(c, (ord(c)if type(c)==str else c, 0, 255))
 
     img.save(f"{name}.png")
