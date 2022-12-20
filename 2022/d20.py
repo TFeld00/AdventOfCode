@@ -12,46 +12,24 @@ with open(f'{DAY}.txt','r')as F:
         r+=[l]
 
 
-class Node:
-    def __init__(self, val, prv=None, nxt=None):
-        self.val = val
-        self.prv = prv
-        self.nxt = nxt
+def run(part=1):
+    m=[1,811589153][part-1]
+    d={i:v*m for i,v in enumerate(r)}
+    
+    a=[*range(len(r))]
 
-def part(p,r):
-    m=1 if p==1 else 811589153
-    r=[Node(v*m)for v in r]
-    for a,b in zip(r,r[1:]+r[:1]):
-        a.nxt=b
-        b.prv=a
+    for _ in range(1 if part==1 else 10):
+        for n in range(len(r)):
+            i=a.index(n)
+            a=a[i+1:]+a[:i]
+            v=d[n]%len(a)
+            a[v:v]=[n]
+    
+    z=0
+    for i in range(len(r)):
+        if d[a[i]]==0:z=i
 
-    for _ in range(1 if p==1 else 10):
-        for v in r:
-            c=v
+    print(sum(d[a[(z+o)%len(a)]] for o in (1000,2000,3000)))
 
-            c.prv.nxt=c.nxt
-            c.nxt.prv=c.prv
-
-            a=c.prv
-            b=c.nxt
-            for _ in range(c.val%(len(r)-1)):
-                a=a.nxt
-            b=a.nxt
-            
-            a.nxt=c
-            c.prv=a
-            b.prv=c
-            c.nxt=b
-
-    for x in r:
-        if x.val == 0:
-            r = 0
-            y = x
-            for _ in range(3):
-                for _ in range(1000):
-                    y = y.nxt
-                r += y.val
-            print(r)
-        
-part(1,r)
-part(2,r)
+run()
+run(2)
