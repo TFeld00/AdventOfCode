@@ -49,6 +49,11 @@ def f(m):
         return s
 
 x,y=f(a),f(b)
+# solve using sympy
+import sympy
+print(sympy.solve(sympy.Eq(sympy.sympify(x),sympy.sympify(y))))
+
+# solve 'manually'
 if type(x)==int:
     s,v=y,x
 else:

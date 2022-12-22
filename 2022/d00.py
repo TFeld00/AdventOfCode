@@ -48,6 +48,5 @@ with open(f'{DAY}.txt','r')as F:
         #print(l)
         r+=[l]
         s+=l
-        pass
 #W,H=len(r[0]),len(r)
 
