@@ -9,9 +9,11 @@ pow = _pow
 from string import ascii_lowercase, ascii_uppercase, ascii_letters, digits, hexdigits, whitespace, punctuation, printable
 from alg.dijkstra import dijkstra
 from img.img import read_img, write_img, write_img_fromlist     #write_img(DAY,COLS)
-from alg.util import parse_with_headers, parse_skip_headers, parse_no_headers, get_neigbors_both, get_neigbors_diag, get_neigbors_orto
+from alg.util import parse_with_headers, parse_skip_headers, parse_no_headers
+from alg.util import get_neigbors_both, get_neigbors_diag, get_neigbors_orto, get_neighbor_positions, get_neighbor_positions_complex
+from alg.util import get_bounds, get_bounds_complex, get_bounds_complex_dict
 from alg.floodfill import fill
-from alg.cellular import step_dict, step_list, to_dict, to_lists
+from alg.cellular import step_dict, step_list, to_dict, to_lists, step_function_game_of_life
 from alg.string import shift_caesar, tr, block_print
 from functools import *
 from fractions import *
@@ -20,7 +22,7 @@ from datetime import *
 from queue import *
 import heapq
 from functools import cache
-import sympy    #sympy.primefactors
+import sympy    #sympy.primefactors, sympy.solve, sympy.sympify, etc..
 import re
 import sys
 
