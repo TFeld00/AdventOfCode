@@ -1,14 +1,8 @@
 DAY,_,_=__file__.rpartition('.')
 
-COLS = {
-    '.': (255, 255, 255),
-    '#': (0, 0, 0),
-}
-
 from alg.file import download_input
 download_input(DAY)
 
-r,g,b=12,13,14
 s=0
 i=0
 PS=0
