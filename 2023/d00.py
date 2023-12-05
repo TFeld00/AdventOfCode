@@ -35,8 +35,8 @@ from alg.file import download_input
 download_input(DAY)
 
 r=[]
-n=0
-s=''
+s=0
+t=''
 
 with open(f'{DAY}.txt','r')as F:
     for l in F:
@@ -49,6 +49,8 @@ with open(f'{DAY}.txt','r')as F:
         #l=list(l)
         #print(l)
         r+=[l]
-        s+=l
+        t+=l
+        
+        
 #W,H=len(r[0]),len(r)
 
