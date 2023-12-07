@@ -13,28 +13,15 @@ s2='AKQT98765432J'[::-1]
 def value1(h):
     high=[*map(s1.find,h)]
     c=Counter(h)
-    m=c.most_common()
-    return [order(m),high]
+    m=[c for _,c in c.most_common()]
+    return [m,high]
 
 def value2(h):
     high=[*map(s2.find,h)]
     c=Counter(h.replace('J',''))
-    m=c.most_common()
-    j=h.count('J')
-    if not m:m=[['J',0]]
-    m=[*map(list,m)]
-    m[0][1]+=j
-    return [order(m),high]
-
-def order(m):
-    if m[0][1]==5:v=5
-    elif m[0][1]==4:v=4
-    elif m[0][1]==3 and m[1][1]==2:v=3
-    elif m[0][1]==3:v=2
-    elif m[0][1]==2 and m[1][1]==2:v=1
-    elif m[0][1]==2:v=0
-    else:v=-1
-    return v
+    m=[c for _,c in c.most_common()]or[0]
+    m[0]+=h.count('J')
+    return [m,high]
 
 with open(f'{DAY}.txt','r')as F:
     for l in F:
