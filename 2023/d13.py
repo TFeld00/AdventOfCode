@@ -17,8 +17,7 @@ L=parse_no_headers(r)
 def f(M,ignore=0):
     for (v,m) in (1,M),(100,[*zip(*M)]):
         for i in range(1,len(m[0])):
-            w=[(''.join(l[:i][::-1]),''.join(l[i:]))for l in m]
-            if all(a.startswith(b)or b.startswith(a) for a,b in w):
+            if all(all(x==y for x,y in zip(l[:i][::-1],l[i:])) for l in m):
                 r=v*i
                 if r!=ignore:
                     return r
@@ -37,10 +36,12 @@ def g(m):
             q=f(w,x)
             if q:return q
     return 0
-
+import time
+a=time.time()
 for m in L:
     m=[*map(list,m)]
     s2+=g(m)
-
+b=time.time()
+print(b-a)
 print(s1)
 print(s2)
