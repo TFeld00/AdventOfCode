@@ -16,6 +16,7 @@ from alg.util import rotate90clockwise, rotate180, rotate90counterclockwise
 from alg.floodfill import fill
 from alg.cellular import step_dict, step_list, to_dict, to_lists, step_function_game_of_life
 from alg.string import shift_caesar, tr, block_print, readable_number, findall_overlapping
+from alg.geom import area, area_pixels
 from functools import *
 from fractions import *
 from textwrap import wrap
