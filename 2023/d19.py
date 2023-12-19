@@ -76,10 +76,7 @@ def f(rule,d):
 #part 1
 s=0
 for l in b:
-    l=re.sub(r'([a-z])',r'"\1"',l)
-    l=l.replace('=',':')
-    l=eval(l)
-    l={v:[n,n]for v,n in l.items()}
+    l={v:[int(n),int(n)]for v,n in zip('xmas',re.findall('\d+',l))}
     if f('in',l):
         s+=sum(x[0]for x in l.values())
 print(s)
