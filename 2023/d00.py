@@ -27,6 +27,8 @@ from functools import cache
 import sympy    #sympy.primefactors, sympy.solve, sympy.sympify, etc..
 import re
 import sys
+import z3
+import networkx as nx
 
 COLS = {
     '.': (255, 255, 255),
