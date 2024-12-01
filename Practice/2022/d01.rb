@@ -1,0 +1,28 @@
+DAY,_,_ = __FILE__.rpartition(?.)
+
+require'prime'
+require'z3'
+
+r=[]
+t=''
+s=0
+
+File.open("#{DAY}.txt", "r") { |f|
+  f.each_line {|l|
+    l=l.chomp
+    #l=l.scan(/-?\d+/).map &:to_i
+    #l=l.split.map &:to_i
+    #l=l.chars.map &:to_i
+    #l=l.split
+    #l=l.to_i
+    #l=l.chars
+    
+    r+=[l]
+    t+=l
+  }
+}
+
+e=r.chunk{_1[0]&&1}.map{_2.sum(&:to_i)}
+
+p e.max
+p e.max(3).sum
