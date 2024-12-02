@@ -1,9 +1,5 @@
 DAY,_,_ = __FILE__.rpartition(?.)
 
-require'prime'
-require'z3'
-
-r=[]
 t=''
 
 File.open("#{DAY}a.txt", "r") { |f|
@@ -15,6 +11,9 @@ File.open("#{DAY}a.txt", "r") { |f|
 
 p t.count(?B)+t.count(?C)*3
 
+# -----------------------
+
+t=''
 File.open("#{DAY}b.txt", "r") { |f|
   f.each_line {|l|
     l=l.chomp
@@ -32,6 +31,7 @@ t.chars.each_slice(2).sum{
 
 p s
 
+# -----------------------
 
 t=''
 File.open("#{DAY}c.txt", "r") { |f|

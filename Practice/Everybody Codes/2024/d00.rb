@@ -7,7 +7,7 @@ r=[]
 t=''
 s=0
 
-File.open("#{DAY}.txt", "r") { |f|
+File.open("#{DAY}a.txt", "r") { |f|
   f.each_line {|l|
     l=l.chomp
     #l=l.scan(/-?\d+/).map &:to_i
