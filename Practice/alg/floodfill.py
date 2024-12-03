@@ -51,3 +51,46 @@ def fill(data, start_coords, fill_value, fillable = None):
                     data[Y][X]=fill_value
 
     return (count, s)
+
+def global_fill_dist(data, start_value, moves = ((-1,0),(1,0),(0,-1),(0,1))):
+    """
+    Global bfs
+    calculates shortest path from every cell to certain cell type.
+    
+    Parameters
+    ----------
+    data : (M, N) list of lists
+        Image with flood to be filled. Modified inplace.
+    start_color : tuple
+        Length-2 tuple of ints defining (row, col) start coordinates.
+
+    Returns
+    -------
+    (Size of area filled, coords of area), ``data`` is modified inplace.
+    """
+       
+    W=len(data[0])
+    H=len(data)
+    q=Queue()
+    s=set()
+    for j,l in enumerate(data):
+        for i,c in enumerate(l):
+            if c==start_value:
+                q.put((i,j,0))
+                s|={(i,j)}
+
+    while not q.empty():
+        x,y,l=q.get()
+
+        for dx,dy in moves:
+            X,Y=x+dx,y+dy
+            if (X,Y)in s:continue
+
+            s|={(X,Y)}
+            if 0<=X<W and 0<=Y<H:
+                q.put((X,Y,l+1))
+                data[Y][X]=l+1
+    return data
+
+def global_fill_dist_diags(data, start_value):
+    return global_fill_dist(data,start_value,((-1,-1),(-1,0),(-1,1),(0,-1),(0,1),(1,-1),(1,0),(1,1)))

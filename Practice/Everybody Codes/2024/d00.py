@@ -35,14 +35,11 @@ COLS = {
     '#': (0, 0, 0),
 }
 
-from alg.file import download_input
-download_input(DAY)
-
 r=[]
 s=0
 t=''
 
-with open(f'{DAY}.txt','r')as F:
+with open(f'{DAY}a.txt','r')as F:
     for l in F:
         l=l.rstrip('\n')
         #l=[*map(int,re.findall('-?\d+',l))]
