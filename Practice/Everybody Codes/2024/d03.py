@@ -17,7 +17,7 @@ from alg.util import parse_with_headers, parse_skip_headers, parse_no_headers
 from alg.util import get_neigbors_both, get_neigbors_diag, get_neigbors_orto, get_neighbor_positions, get_neighbor_positions_complex
 from alg.util import get_bounds, get_bounds_complex, get_bounds_complex_dict
 from alg.util import rotate90clockwise, rotate180, rotate90counterclockwise
-from alg.floodfill import fill
+from alg.floodfill import fill, global_fill_dist, global_fill_dist_diags
 from alg.cellular import step_dict, step_list, to_dict, to_lists, step_function_game_of_life
 from alg.string import shift_caesar, tr, block_print, readable_number, findall_overlapping
 from alg.geom import area, area_pixels
@@ -47,6 +47,7 @@ cols = {
 }
 for i in range(11):
     cols['%X'%(i)] = (255-25*i,255-25*i,255-25*i)
+    cols[i] = (255-25*i,255-25*i,255-25*i)
 
 def solve(part):
     r=[]
@@ -60,36 +61,14 @@ def solve(part):
     r=[list('.'*(W))]+r
     r+=list('.'*(W)),
 
-    R=0
+    if part < 3:
+        global_fill_dist(r,'.')
+    else:
+        global_fill_dist_diags(r,'.')
 
-    q=Queue()
-    s=set()
-    for j,l in enumerate(r):
-        for i,c in enumerate(l):
-            if c=='.':
-                q.put((i,j,0))
-                s|={(i,j)}
-
-    while not q.empty():
-        x,y,l=q.get()
-
-        for dx in (-1,0,1):
-            for dy in(-1,0,1):
-                if (dx,dy)==(0,0):continue
-                if part<3 and dx!=0 and dy!=0:continue
-                X,Y=x+dx,y+dy
-                if (X,Y)in s:continue
-
-                s|={(X,Y)}
-                if 0<=X<W and 0<=Y<H:
-                    if r[Y][X]=='#':
-                        q.put((X,Y,l+1))
-                        R+=l+1
-                        r[Y][X]='%X'%(l+1)
-
-    #for l in r:print(''.join(l))
+    print(sum(sum(v for v in l if type(v)==int)for l in r))
     write_img_fromlist(r,f'{DAY}{"abc"[part-1]}',cols)
-    print(R)
+
 
 solve(1)
 solve(2)
