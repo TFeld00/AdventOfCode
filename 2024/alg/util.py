@@ -113,8 +113,8 @@ def get_bounds(m:list,function):
     return min(X),max(X),min(Y),max(Y)
 
 def rotate90clockwise(m:list):
-    return [*zip(*m[::-1])]
+    return [list(l)for l in zip(*m[::-1])]
 def rotate90counterclockwise(m:list):
-    return [*zip(*m)][::-1]
+    return [list(l)for l in zip(*m)][::-1]
 def rotate180(m:list):
     return [l[::-1] for l in m[::-1]]

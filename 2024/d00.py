@@ -13,6 +13,7 @@ from alg.util import parse_with_headers, parse_skip_headers, parse_no_headers
 from alg.util import get_neigbors_both, get_neigbors_diag, get_neigbors_orto, get_neighbor_positions, get_neighbor_positions_complex
 from alg.util import get_bounds, get_bounds_complex, get_bounds_complex_dict
 from alg.util import rotate90clockwise, rotate180, rotate90counterclockwise
+from alg.grid import word_search, pattern_search
 from alg.floodfill import fill, global_fill_dist, global_fill_dist_diags
 from alg.cellular import step_dict, step_list, to_dict, to_lists, step_function_game_of_life
 from alg.string import shift_caesar, tr, block_print, readable_number, findall_overlapping
