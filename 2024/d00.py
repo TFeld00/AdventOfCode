@@ -18,7 +18,7 @@ from alg.floodfill import fill, global_fill_dist, global_fill_dist_diags
 from alg.cellular import step_dict, step_list, to_dict, to_lists, step_function_game_of_life
 from alg.string import shift_caesar, tr, block_print, readable_number, findall_overlapping
 from alg.geom import area, area_pixels
-from functools import *
+from functools import * # cmp_to_key etc..
 from fractions import *
 from textwrap import wrap
 from datetime import *
