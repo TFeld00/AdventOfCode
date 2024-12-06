@@ -77,17 +77,14 @@ def hasLoop(r,x,y,d=0):
 r2=0
 r=[*map(list,r)]
 draw = [*map(list,r)]
-for i in range(H):
-    for j in range(W):
-        c=r[i][j]
-        if c!='.':continue
-        r[i][j]= '#'
-        if hasLoop(r,xInit,yInit):
-            r2+=1
-            draw[i][j]='O'
-        r[i][j]=c
-    print(end='.')
-print()
+for j,i in s:
+    c=r[i][j]
+    if c!='.':continue
+    r[i][j]= '#'
+    if hasLoop(r,xInit,yInit):
+        r2+=1
+        draw[i][j]='O'
+    r[i][j]=c
 print(r2)
 
 ## draw
