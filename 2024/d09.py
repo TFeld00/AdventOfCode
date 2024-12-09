@@ -38,12 +38,14 @@ print(s)
 l=[]
 f=0
 for i,c in enumerate(t):
-   f^=1
-   i//=2
-   if f:
-      l+=[int(c),i],
-   else:
-       l+=[int(c),-1],
+    f^=1
+    i//=2
+    c=int(c)
+    if c:
+        if f:
+            l+=[c,i],
+        else:
+            l+=[c,-1],
 
 j=len(l)-1
 while j>0:
