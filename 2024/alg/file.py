@@ -12,7 +12,7 @@ def download_input(day_file):
         return
     
     url=f'https://adventofcode.com/{YEAR}/day/{day}/input'
-    session='53616c7465645f5f2be56eabd275bf4fe98510938d2bb8fd390e37bc074581532106b0a5d361cb1bcaba5680d640d2dc8dc0be1bd5fd0113d038d3eea9ff7802'
+    session='53616c7465645f5fb1063f681deefc22fb1d87299e9d028ffb85016377769673c66aa3e2fe44b6919e38635d547b5056adf4d4baab8f63844867058c16e4b64f'
     r=requests.get(url,cookies={'session':session})
     if r.status_code == 404:
         return
