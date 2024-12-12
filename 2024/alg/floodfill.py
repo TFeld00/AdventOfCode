@@ -38,6 +38,8 @@ def fill(data, start_coords, fill_value, fillable = None):
     count = 0
     while not q.empty():
         x,y,c=q.get()
+        count += 1
+        s|={(x,y)}
         for dx,dy in (0,1),(0,-1),(1,0),(-1,0):
             X,Y=x+dx,y+dy
             if (X,Y)in s:continue
@@ -45,9 +47,7 @@ def fill(data, start_coords, fill_value, fillable = None):
             if 0<=X<W and 0<=Y<H:
                 n=data[Y][X]
                 if fillable(c,n):
-                    s|={(X,Y)}
                     q.put((X,Y,n))
-                    count += 1
                     data[Y][X]=fill_value
 
     return (count, s)
