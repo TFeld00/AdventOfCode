@@ -29,6 +29,7 @@ for (x,y),(a,b),(q,z) in parse_no_headers(r):
         res+=a[v]*3+a[w]
 print(z3.simplify(res))
 
+res = 0
 
 for (x,y),(a,b),(q,z) in parse_no_headers(r):
     v=z3.Int('v')
