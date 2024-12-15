@@ -12,6 +12,7 @@ COLS = {
     ']': (163, 108, 77),
 }
 
+
 from alg.file import download_input
 download_input(DAY)
 
@@ -25,14 +26,13 @@ with open(f'{DAY}.txt','r')as F:
             X,Y=l.find('@'),i
         i+=1
         
-        
 map,moves=parse_no_headers(r)
 moves=''.join(''.join(x)for x in moves)
 
 r=[l[:]for l in map]
 W,H=len(r[0]),len(r)
 
-def move(X,Y,m):
+def move(X,Y,m): #works for part 1
     dx,dy = [(0,-1),(0,1),(-1,0),(1,0)]['^v<>'.find(m)]
     x,y=X,Y
     while 0<=x<W and 0<=y<H:
@@ -50,12 +50,40 @@ def move(X,Y,m):
             return X,Y
             #stop
 
+def move2(X,Y,m): #works for parts 1+2
+    dx,dy = [(0,-1),(0,1),(-1,0),(1,0)]['^v<>'.find(m)]
+
+    q=[(X,Y,X+dx,Y+dy,'@')]
+    
+    for _,_,x,y,c in q:
+        if r[y][x]=='#':
+            # cannot move
+            return X,Y
+        elif r[y][x]=='O':
+            q+=[x,y,x+dx,y+dy,'O'],
+        elif r[y][x]=='[':
+            q+=[x,y,x+dx,y+dy,'['],
+            if dy:
+                q+=[x+1,y,x+1+dx,y+dy,']'],
+        elif r[y][x]==']':
+            q+=[x,y,x+dx,y+dy,']'],
+            if dy:
+                q+=[x-1,y,x-1+dx,y+dy,'['],
+    for x,y,X,Y,c in q[::-1]:
+        r[y][x]='.'
+        r[Y][X]=c
+    return q[0][2:4]
+            
+
+# Part 1
+
+r=[l[:]for l in map]
 
 # pre moves:
 write_img_fromlist(r,f"{DAY}_1a", COLS)
 
 for m in moves:
-    X,Y=move(X,Y,m)
+    X,Y=move2(X,Y,m)
 
 s=0
 for i,l in enumerate(r):
@@ -84,30 +112,6 @@ for i,l in enumerate(r):
         if c=='@':
             X,Y=j,i
             break
-
-
-def move2(X,Y,m):
-    dx,dy = [(0,-1),(0,1),(-1,0),(1,0)]['^v<>'.find(m)]
-
-    q=[(X,Y,X+dx,Y+dy,'@')]
-    
-    for _,_,x,y,c in q:
-        if r[y][x]=='#':
-            # cannot move
-            return X,Y
-        elif r[y][x]=='[':
-            q+=[x,y,x+dx,y+dy,'['],
-            if dy:
-                q+=[x+1,y,x+1+dx,y+dy,']'],
-        elif r[y][x]==']':
-            q+=[x,y,x+dx,y+dy,']'],
-            if dy:
-                q+=[x-1,y,x-1+dx,y+dy,'['],
-    for x,y,X,Y,c in q[::-1]:
-        r[y][x]='.'
-        r[Y][X]=c
-    return q[0][2:4]
-            
 
 # pre moves:
 write_img_fromlist(r,f"{DAY}_2a", COLS)
