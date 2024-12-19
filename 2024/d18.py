@@ -32,7 +32,6 @@ def bfs(r,x,y):
         x,y,l=q.get()
         
         if (x,y)==(W-1,H-1):
-            #print(l)
             #WIN
             return l
         
