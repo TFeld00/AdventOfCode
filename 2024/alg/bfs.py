@@ -16,7 +16,7 @@ def bfs(r,x,y):
     W=len(r[0])
     H=len(r)
     q=Queue()
-    s=set()
+    s={(x,y)}
     q.put((x,y,0))
     while not q.empty():
         x,y,l=q.get()
