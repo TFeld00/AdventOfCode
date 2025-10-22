@@ -54,8 +54,25 @@ with open(f'{DAY}.txt','r')as F:
         #l=list(l)
         #print(l)
         r+=[l]
-        #t+=l
         
         
 #W,H=len(r[0]),len(r)
 
+a=parse_no_headers(r)
+
+k=[]
+l=[]
+for v in a:
+    if v[0][0]=='.': #key
+        b=[w.count('#')-1 for w in zip(*v)]
+        k+=b,
+    else:
+        b=[w.count('#')-1 for w in zip(*v)]
+        l+=b,
+
+res=0
+for a in k:
+    for b in l:
+#        print(a,b,[x+y for x,y in zip(a,b)])
+        res+=all(x+y<=5 for x,y in zip(a,b))
+print(res)
