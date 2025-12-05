@@ -15,12 +15,13 @@ with open(f'{DAY}.txt','r')as F:
         r+=[l]
 
 r,L=parse_no_headers(r)
+r=[(x,y+1)for x,y in r]
 
 # --
 
 s=0
 for [v] in L:
-    if any (x<=v<=y for x,y in r):
+    if any (x<=v<y for x,y in r):
         s+=1
 print(s)
 
@@ -31,7 +32,6 @@ for x,y in r:
     s|={x,y}
 
 s2=set()
-t=set()
 for x,y in r:
     n=set()
     for v in s:
@@ -39,14 +39,7 @@ for x,y in r:
             n|={v}
     for a,b in pairwise(sorted(n)):
         s2|={(a,b)}
-    if len(n)==1:
-        a=n.pop()
-        s2|={(a,a)}
-t={x for x,y in s2}
-t2={x for x,y in s2 if x!=y}
 r=0
 for a,b in s2:
-    if b in t and (a!=b or b in t2):
-        b-=1
-    r+=b-a+1
+    r+=b-a
 print(r)
