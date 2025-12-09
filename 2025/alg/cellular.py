@@ -55,7 +55,7 @@ def step_list(m:list, step_function, default, expandable=True):
 
 
 def to_lists(d:dict, map_function=lambda v: v, default=0):
-    x, y = zip(*d.keys())
+    y,x = zip(*d.keys())
     m = [[
         map_function(d.get((i, j), default))
         for j in range(min(x), max(x)+1)]
