@@ -18,7 +18,7 @@ def f(n,t,*x):
     if n in x:return 0
     if n==t:
         return 1
-    return sum(f(v,t,x)for v in d.get(n,[]))
+    return sum(f(v,t,*x)for v in d.get(n,[]))
 
 # Part 1
 print(f('you','out'))
